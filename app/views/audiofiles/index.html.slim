@@ -1,0 +1,19 @@
+h2 Your files
+
+- if current_user.present?
+	fieldset.simple.navbar-form 
+		legend Add audiofile
+		= form_for(@audiofile) do |f| 
+			.field.m-input-prepend
+				= f.hidden_field :owner, :value => current_user.id 
+				= f.file_field :audio 
+				br
+				= f.text_field :description ,  :placeholder => "Description", :calss => "m-wrap"
+				= f.submit 'Download', :class => "btn-primary check-file"
+	br
+	
+	=render "files"
+	= link_to 'Friends', friendship_index_path
+- else
+	| Please, log in or sign up
+

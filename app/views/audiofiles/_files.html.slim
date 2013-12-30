@@ -1,0 +1,9 @@
+.lli			
+	- @au.each do |x|
+		.line
+			= x.description.blank? ? x.audio_file_name : x.description 
+			= link_to    download_path(x),  :class => "some_class"
+				span.glyphicon.glyphicon-cloud-download  
+			= link_to    x, method: :delete, data: { confirm: 'Are you sure?' }, :class => "some_class"
+				span.glyphicon.glyphicon-remove  
+			hr

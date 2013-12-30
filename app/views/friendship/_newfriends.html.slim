@@ -1,0 +1,9 @@
+- if @newfriends.blank?
+	| Not found
+- else
+	- @newfriends.each do |x|
+		.lli
+			= x.email
+			= link_to    friendship_path( x),:action => "new", :method => :put,  :class => "some_class"
+				span.glyphicon.glyphicon-plus  
+	hr

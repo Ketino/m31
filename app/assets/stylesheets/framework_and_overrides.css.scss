@@ -1,0 +1,41 @@
+
+
+
+ 
+@import 'bootstrap';
+ 
+h1 {
+  padding-top: 100px;
+}
+
+.container{
+	width: 400px;
+}
+
+main{
+	width: 700px;
+	margin: auto;
+}
+
+fieldset.simple {
+	border: 1px  solid;
+	border-radius: 3px;
+	padding : 10px;
+}
+legend {
+  width: auto;
+  padding: 0;
+  border: 0;
+  margin-bottom: 5px;
+}
+.some_class{
+	margin-left: 10px;
+}
+
+span.glyphicon.glyphicon-remove  {
+	color: red;
+}
+
+div.alert{
+	margin-top: 70px;
+}

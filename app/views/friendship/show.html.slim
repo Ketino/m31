@@ -1,0 +1,8 @@
+h2 List your friend - #{@friend.email}
+hr
+- if @au_new.blank?
+	| No new files
+- else
+	= button_tag "Only New", :class => "newnew" 
+= render "audiofiles/friendsfiles"
+= link_to 'Friends list', friendship_index_path

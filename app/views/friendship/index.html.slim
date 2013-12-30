@@ -1,0 +1,33 @@
+h2 Your friends
+fieldset.simple.navbar-form 
+	legend Find friend
+	= form_tag  '/friendship/search', remote: true  ,:method => :get do 
+		.field
+			= label_tag :email 
+			= text_field_tag :email , "",:class => "form-control"
+		.field
+			= label_tag :username 
+			= text_field_tag :username, "",:class => "form-control" 
+		.actions
+			br
+			= submit_tag 'Seach' , :class => 'btn btn-primary'
+	br
+div#abc 
+- if @friends.blank?
+	| No friends yet :(
+	br
+- else
+	h3 my best friends
+	- @friends.each do |x|
+		hr
+		.lli
+			= x.username 
+			= x.email 
+			= link_to    friendship_path(x), :class => "some_class"
+				span.glyphicon.glyphicon-log-in
+			= link_to    friendship_path(x), :method => :delete, :class => "some_class"
+				span.glyphicon.glyphicon-remove  
+
+	hr
+= link_to 'Home', audiofiles_path
+
