@@ -6,11 +6,19 @@ class FriendshipController < ApplicationController
 	
 	def show
 		@friend = User.find(params[:id])
-		@au = @friend.audiofiles
+		if @friend.friends.include?(current_user)
+			@au = @friend.audiofiles
+		else
+			@au=[]
+		end
 		@friendship = current_user.friendships.where(:friend_id => params[:id])
-		@lastvisited = @friendship.first.updated_at
-		@au_new = @friend.audiofiles.where("updated_at > ?",@lastvisited)
-		@friendship.first.touch
+		unless @friendship.blank?
+			@lastvisited = @friendship.first.updated_at
+			@au_new = @friend.audiofiles.where("updated_at > ?",@lastvisited)
+			@friendship.first.touch
+		else
+			@au_new = []
+		end
 	end
 
 	def search
