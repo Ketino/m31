@@ -23,8 +23,9 @@ div#abc
 		.lli
 			= x.username 
 			= x.email 
-			= link_to    friendship_path(x), :class => "some_class"
-				span.glyphicon.glyphicon-log-in
+			- if x.friends.include?(current_user)
+				= link_to    friendship_path(x), :class => "some_class"
+					span.glyphicon.glyphicon-log-in
 			= link_to    friendship_path(x), :method => :delete, :class => "some_class"
 				span.glyphicon.glyphicon-remove  
 
