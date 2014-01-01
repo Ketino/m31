@@ -70,6 +70,23 @@ describe FriendshipController do
 			expect(response.body).to match /twice/m
 		end
 
+		it "when  friend   don't friended you " do
+			user2 = create(:user, :id => 2)
+			fr = create(:friendship)
+			audiofile = create(:audiofile_mp3, {:owner => 2})
+			get :show, {:id => '2'}
+			expect(response.body).to match /No files/m
+		end
+
+		it "when  friend   friended you " do
+			user2 = create(:user, :id => 2)
+			fr = create(:friendship)
+			fr2 = create(:friendship,{:user_id => 2, :friend_id => 1})
+			audiofile = create(:audiofile_mp3, {:owner => 2})
+			get :show, {:id => '2'}
+			expect(response.body).to match /new file/m
+		end
+
 		it "destroy" do
 			fr = create(:friendship)
 			get :destroy, {:id => '2'}
